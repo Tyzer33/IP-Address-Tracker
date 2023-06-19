@@ -1,0 +1,48 @@
+.searchbar {
+  @include flex;
+  position: relative;
+  background-color: white;
+  height: 3.625rem;
+  width: 100%;
+  max-width: 34.6875rem;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+
+  &:has(.searchbar__input:focus) {
+    outline: 2px solid black;
+  }
+
+  &__input {
+    border: none;
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem 0 0 1rem;
+    padding: 1.5rem;
+    padding-right: 0.7rem;
+    font-size: 1.15rem;
+    text-overflow: ellipsis;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__submit {
+    background: no-repeat center/1.8rem url('../../public/img/keyboard_arrow_right.svg')
+      var(--submit-button);
+    border: none;
+    height: 100%;
+    min-width: 3.625rem;
+    cursor: pointer;
+
+    &:hover {
+      background: no-repeat center/1.8rem url('../../public/img/keyboard_arrow_right.svg')
+        var(--submit-button-hover);
+    }
+  }
+
+  @include desktop {
+    margin-bottom: 3rem;
+  }
+}

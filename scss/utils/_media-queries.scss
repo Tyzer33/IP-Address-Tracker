@@ -1,0 +1,11 @@
+@mixin desktop {
+  @media (min-width: map-get($breakpoints, 'desktop')) {
+    @content;
+  }
+}
+
+@mixin big-desktop {
+  @media (min-width: map-get($breakpoints, 'big-desktop')) {
+    @content;
+  }
+}

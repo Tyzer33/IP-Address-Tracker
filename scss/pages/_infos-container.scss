@@ -1,0 +1,16 @@
+.infos-container {
+  @include flex(column);
+  background: white;
+  max-width: 20.4375rem;
+  padding: 0.75rem;
+  border-radius: 1rem;
+  z-index: 999;
+
+  @include desktop {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 10.0625rem;
+    max-width: none;
+    padding: 0rem;
+  }
+}

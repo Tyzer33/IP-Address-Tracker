@@ -1,0 +1,26 @@
+.error {
+  @include flex;
+  display: none;
+  position: absolute;
+  bottom: 0;
+  margin: 1rem;
+  color: red;
+  font-weight: 500;
+  padding: 0.8rem;
+  background-color: white;
+  max-width: 34.6875rem;
+  border-radius: 0.6rem;
+  z-index: 9999;
+
+  &__cross {
+    background: center url('../../public/img/cross.svg');
+    height: 1.125rem;
+    width: 1.125rem;
+    margin-left: 1rem;
+    cursor: pointer;
+  }
+
+  @include desktop {
+    font-size: 1.3rem;
+  }
+}

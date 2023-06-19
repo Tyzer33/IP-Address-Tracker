@@ -1,0 +1,23 @@
+/* SASS VARIABLES */
+
+$breakpoints: (
+  'desktop': 1200px,
+  'big-desktop': 1400px,
+);
+
+/* CSS VARIABLES */
+
+:root {
+  --header-height: 18.75rem;
+  --title: hsl(0, 0%, 100%);
+  --placeholder: hsl(0, 0%, 59%);
+  --submit-button: hsl(0, 0%, 0%);
+  --submit-button-hover: hsl(0, 0%, 25%);
+  --label: hsl(0, 0%, 59%);
+  --info: hsl(0, 0%, 17%);
+  --border: hsl(0, 0%, 90%);
+
+  @media (min-width: map-get($breakpoints, 'desktop')) {
+    --header-height: 17.5rem;
+  }
+}

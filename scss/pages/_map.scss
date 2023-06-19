@@ -1,0 +1,5 @@
+.map {
+  position: absolute;
+  inset: var(--header-height) 0 0 0;
+  z-index: -9999;
+}

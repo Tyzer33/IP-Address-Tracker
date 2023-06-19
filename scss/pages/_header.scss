@@ -1,0 +1,28 @@
+.header {
+  @include flex(column, flex-start);
+  background: no-repeat top url(../../public/img/pattern-bg.png);
+  background-size: auto var(--header-height);
+  min-height: var(--header-height);
+  width: 100%;
+  padding: 1.5rem;
+
+  &__title {
+    color: var(--title);
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  @include desktop {
+    padding: 2.08rem;
+
+    &__title {
+      font-size: 1.95rem;
+    }
+  }
+
+  @include big-desktop {
+    background-size: 100% var(--header-height);
+  }
+}
