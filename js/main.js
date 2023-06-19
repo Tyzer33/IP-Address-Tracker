@@ -46,12 +46,12 @@ const regex = /^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}$/
 function handleSuccess(data) {
   const time = data.timezone.replaceAll('/', ', ').replaceAll('_', ' ')
 
-  htmlIpAddress.textContent = data.query
-  htmlLocation.textContent = `${data.city}, ${data.region} ${data.zip} ${data.countryCode}`
+  htmlIpAddress.textContent = data.ip // data.ip
+  htmlLocation.textContent = `${data.city}, ${data.region_code} ${data.postal} ${data.country_code}`
   htmlTimezone.textContent = time
-  htmlIsp.textContent = data.isp
+  htmlIsp.textContent = data.org
 
-  const newLatLng = new L.LatLng(data.lat, data.lon)
+  const newLatLng = new L.LatLng(data.latitude, data.longitude)
   marker.setLatLng(newLatLng)
   map.setView(newLatLng)
   if (!map.hasLayer(marker)) {
@@ -70,6 +70,8 @@ function handleError(type) {
     errorMessage.textContent = 'Only IPv4 (xxx.xxx.xxx.xxx) format is accepted.'
   } else if (type === 'network') {
     errorMessage.textContent = 'Network error, please try again later!'
+  } else if (type === 'empty') {
+    errorMessage.textContent = 'Enter an IP adress'
   } else {
     errorMessage.textContent = 'Unknow error, please try again later!'
   }
@@ -77,16 +79,20 @@ function handleError(type) {
 }
 
 function handleSubmit() {
-  if (!regex.test(input.value) && input.value !== '') {
+  if (input.value === '') {
+    handleError('empty')
+    return
+  }
+  if (!regex.test(input.value)) {
     handleError('format')
     return
   }
 
   errorContainer.style.display = 'none'
 
-  fetch(`http://ip-api.com/json/${input.value}`)
+  fetch(`https://ipapi.co/${input.value}/json/`)
     .then((response) => response.json())
-    .then((data) => (data.status === 'success' ? handleSuccess(data) : handleError('ip')))
+    .then((data) => (data.error ? handleError('ip') : handleSuccess(data)))
     .catch(() => handleError('network'))
 }
 
